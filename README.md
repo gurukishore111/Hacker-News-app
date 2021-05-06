@@ -1,4 +1,4 @@
-# Hacker-News-app
+# Hacker News app
 This project developed in React Native &amp; Hacker News API
 
 Demo ▶️:
