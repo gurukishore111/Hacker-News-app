@@ -1,21 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import styled from "styled-components";
+import Headers from "./components/Header/header";
+import { Stories } from "./components/Stories/Stories";
+import MyTabs from "./navigation/MyTab";
+import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 
 export default function App() {
+  const scheme = useColorScheme();
+  const MyDarkTheme = {
+    dark: true,
+    colors: {
+      primary: "#9933FF",
+      background: "#000023",
+      card: "#000028",
+      text: "#fffff",
+      border: "#000028",
+      notification: "#9933ff",
+    },
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <View style={{ marginTop: 42, marginBottom: 12 }}>
+        <Headers />
+      </View>
+      <Container>
+        <MyTabs />
+      </Container>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Container = styled.SafeAreaView`
+  flex: 1;
+`;
