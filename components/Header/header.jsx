@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 import styled from "styled-components";
 
 export default function Headers() {
+  const [greeting, setGreet] = useState("");
+  const setGreeting = () => {
+    const myDate = new Date();
+    const hrs = myDate.getHours();
+
+    if (hrs < 12) {
+      setGreet("Good Morning");
+    } else if (hrs >= 12 && hrs <= 17) {
+      setGreet("Good Afternoon");
+    } else if (hrs >= 17 && hrs <= 24) {
+      setGreet("Good Evening");
+    }
+  };
+  useEffect(() => {
+    setGreeting();
+  });
   return (
     <View>
       <Header>
         <Text>
-          Hello <Username>Guru,</Username>
+          Hello <Username>{greeting},</Username>
           {`\n`}
           <Text>Best News for today</Text>
         </Text>

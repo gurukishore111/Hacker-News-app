@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView, View, ActivityIndicator } from "react-native";
+import {
+  ScrollView,
+  View,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native";
 import styled from "styled-components";
 import { Stories } from "../components/Stories/Stories";
 import { getStories } from "../services/api";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [storyIds, setStoryIds] = useState([]);
 
   useEffect(() => {
@@ -20,7 +25,7 @@ export default function HomeScreen() {
         <Container>
           <ScrollView>
             <Text>Discover Lastest News</Text>
-            <Stories storyId={storyIds} job={false} />
+            <Stories storyId={storyIds} job={false} navigation={navigation} />
           </ScrollView>
         </Container>
       )}

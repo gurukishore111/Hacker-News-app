@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Stories } from "../components/Stories/Stories";
 import { gethotStories } from "../services/api";
 
-export default function HotScreen() {
+export default function HotScreen({ navigation }) {
   const [hotstoryIds, sethotStoryIds] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,11 @@ export default function HotScreen() {
         <Container>
           <ScrollView>
             <Text>Hot News</Text>
-            <Stories storyId={hotstoryIds} job={false} />
+            <Stories
+              storyId={hotstoryIds}
+              job={false}
+              navigation={navigation}
+            />
           </ScrollView>
         </Container>
       )}

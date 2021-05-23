@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { getStory } from "../../services/api";
 import { Card } from "../Card/Card";
 
-export const Story = ({ storyId, job }) => {
+export const Story = ({ storyId, job, navigation }) => {
   const [story, setStory] = useState({});
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const Story = ({ storyId, job }) => {
 
   return (
     <ViewBox>
-      <Card story={story} job={job} />
+      <Card story={story} job={job} navigation={navigation} />
     </ViewBox>
   );
 };

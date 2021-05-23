@@ -7,7 +7,7 @@ import { Stories } from "../components/Stories/Stories";
 
 import { getJobStories } from "../services/api";
 
-export default function JobScreen() {
+export default function JobScreen({ navigation }) {
   const [jobstoryIds, setJobStoryIds] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function JobScreen() {
         <Container>
           <ScrollView>
             <Text>Lastest Job Alerts</Text>
-            <Stories storyId={jobstoryIds} job={true} />
+            <Stories storyId={jobstoryIds} job={true} navigation={navigation} />
           </ScrollView>
         </Container>
       )}

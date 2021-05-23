@@ -11,8 +11,8 @@ import styled from "styled-components";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import moment from "moment";
 
-export const Card = ({ story, job }) => {
-  console.log(job);
+export const Card = ({ story, job, navigation }) => {
+  //console.log(job);
   const CardStyle = {
     ViewBox: {
       shadowColor: "#000",
@@ -55,7 +55,7 @@ export const Card = ({ story, job }) => {
       alert(error.message);
     }
   };
-  console.log(Object.keys(story).length);
+  //console.log(Object.keys(story).length);
   return (
     <>
       {story.title && (
@@ -70,29 +70,41 @@ export const Card = ({ story, job }) => {
                 <TouchableOpacity
                   onPress={() =>
                     story.url
-                      ? Linking.openURL(story.url)
+                      ? navigation.navigate("webview", { data: story })
                       : alert("Improper information")
                   }
                 >
                   <Image
-                    source={{ uri: "https://source.unsplash.com/random" }}
+                    source={{
+                      uri: "https://source.unsplash.com/featured/?{nature}",
+                    }}
                     resizeMode="cover"
                     style={CardStyle.imageStyle}
                   />
                 </TouchableOpacity>
               )}
 
-              <TouchableOpacity onPress={() => Linking.openURL(story.url)}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("webview", { data: story })}
+              >
                 <TextBase>{story.title}</TextBase>
               </TouchableOpacity>
               <View style={CardStyle.CardContainer}>
-                <TouchableOpacity onPress={() => Linking.openURL(story.url)}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("webview", { data: story })
+                  }
+                >
                   <View style={CardStyle.innerContainer}>
                     <AntDesign name="hearto" size={24} color="#fa66bd" />
                     <Text style={CardStyle.text}>{story.score}</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => Linking.openURL(story.url)}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("webview", { data: story })
+                  }
+                >
                   <View style={CardStyle.innerContainer}>
                     <MaterialIcons name="comment" size={24} color="black" />
                     {story.kids && story.kids.length > 0 ? (

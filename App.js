@@ -6,6 +6,7 @@ import Headers from "./components/Header/header";
 import { Stories } from "./components/Stories/Stories";
 import MyTabs from "./navigation/MyTab";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
+import MyStack from "./navigation/StackNav";
 
 export default function App() {
   const scheme = useColorScheme();
@@ -26,7 +27,7 @@ export default function App() {
         <Headers />
       </View>
       <Container>
-        <MyTabs />
+        <MyStack />
       </Container>
     </>
   );
